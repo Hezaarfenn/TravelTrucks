@@ -4,7 +4,7 @@ import logo from "/TravelTrucksLogo.svg";
 
 const Navigation = () => {
   return (
-    <div className="flex flex-1/2 p-6 pl-20 bg-[#F7F7F7]">
+    <div className="flex flex-1/2 p-6 pl-14 bg-[#F7F7F7]">
       <Link to="/" className="flex w-1/2">
         <img width="136px" height="15px" src={logo} alt="logo" />
       </Link>
