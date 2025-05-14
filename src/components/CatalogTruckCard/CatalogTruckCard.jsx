@@ -6,11 +6,11 @@ const CatalogTruckCard = ({ items = [] }) => {
           <div className="flex gap-6">
             <img
               className="w-[292px] h-[320px] object-cover"
-              src="{item.gallery[0]?.thumb"
-              alt="{item.name}"
+              src={item.gallery[0]?.thumb}
+              alt={item.name}
             />
             <div>
-              <div className="flex gap-60">
+              <div className="flex gap-60 justify-between">
                 <h2>{item.name}</h2>
                 <div className="flex gap-4">
                   <p>{item.price}</p>

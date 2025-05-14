@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import fetchCatalog from "../../redux/catalog/catalogSlice";
+import { useEffect, useState } from "react";
+import { fetchCatalog } from "../../redux/catalog/catalogOps";
+import { filterTrucks } from "../../utils/filterTrucks";
 import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar";
 import CatalogTruckCard from "../../components/CatalogTruckCard/CatalogTruckCard";
 
@@ -8,17 +9,44 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.catalog);
 
-  const handleSearch = () => {
+  const allTrucks = items?.items || [];
+
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  const [location, setLocation] = useState("");
+  const [selectedEquipments, setSelectedEquipments] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
+
+  useEffect(() => {
     dispatch(fetchCatalog());
+  }, [dispatch]);
+
+  const handleSearch = () => {
+    const result = filterTrucks({
+      trucks: allTrucks,
+      location,
+      selectedTypes,
+      selectedEquipments,
+    });
+
+    console.log("FILTERED RESULT:", result);
+    setFilteredItems(result);
   };
 
   return (
     <div className="flex gap-20">
       <div>
-        <CatalogSideBar />
+        <CatalogSideBar
+          location={location}
+          setLocation={setLocation}
+          selectedEquipments={selectedEquipments}
+          setSelectedEquipments={setSelectedEquipments}
+          selectedTypes={selectedTypes}
+          setSelectedTypes={setSelectedTypes}
+        />
         <button
           onClick={handleSearch}
-          className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10"
+          className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10 ml-12"
         >
           Search
         </button>
@@ -27,7 +55,11 @@ const CatalogPage = () => {
       <div>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
-        {items.length > 0 && <CatalogTruckCard items={items} />}
+        {filteredItems.length > 0 ? (
+          <CatalogTruckCard items={filteredItems} />
+        ) : (
+          allTrucks.length > 0 && <CatalogTruckCard items={allTrucks} />
+        )}
       </div>
     </div>
   );

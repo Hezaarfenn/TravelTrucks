@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const equipmentList = [
   { id: "ac", label: "AC", icon: "icon-ac" },
   { id: "auto", label: "Automatic", icon: "icon-automatic" },
@@ -9,15 +7,23 @@ const equipmentList = [
 ];
 
 const typeList = [
-  { id: "van", label: "Van", icon: "icon-van" },
-  { id: "full", label: "Full Integrated", icon: "icon-fully-integrated" },
+  { id: "panelTruck", label: "Van", icon: "icon-van" },
+  {
+    id: "fullyIntegrated",
+    label: "Full Integrated",
+    icon: "icon-fully-integrated",
+  },
   { id: "alcove", label: "Alcove", icon: "icon-alcove" },
 ];
 
-const CatalogSideBar = () => {
-  const [selectedEquipments, setSelectedEquipments] = useState([]);
-  const [selectedTypes, setSelectedTypes] = useState([]);
-
+const CatalogSideBar = ({
+  location,
+  setLocation,
+  selectedEquipments,
+  setSelectedEquipments,
+  selectedTypes,
+  setSelectedTypes,
+}) => {
   const toggleItem = (id, type) => {
     const updater =
       type === "equipment" ? setSelectedEquipments : setSelectedTypes;
@@ -64,6 +70,8 @@ const CatalogSideBar = () => {
             type="text"
             placeholder="Please enter the location."
             name="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
         </div>
       </div>
