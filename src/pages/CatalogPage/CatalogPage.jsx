@@ -4,6 +4,7 @@ import { fetchCatalog } from "../../redux/catalog/catalogOps";
 import { filterTrucks } from "../../utils/filterTrucks";
 import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar";
 import CatalogTruckCard from "../../components/CatalogTruckCard/CatalogTruckCard";
+import { Loader } from "../../components/Loader/Loader";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const CatalogPage = () => {
       </div>
 
       <div>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader />}
         {error && <p>Error: {error}</p>}
         {filteredItems.length > 0 ? (
           <CatalogTruckCard items={filteredItems} />
