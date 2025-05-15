@@ -1,13 +1,49 @@
 import { useState } from "react";
 import Features from "../DetailsFeatures/DetailsFeatures";
 import Reviews from "../DetailsReviews/DetailsReviews";
+import CamperContactForm from "../CamperContactForm/CamperContactForm";
 const CamperDetails = ({ camper }) => {
   const [activeTab, setActiveTab] = useState("features");
 
   if (!camper) return null;
 
-  const { name, raiting, reviews, location, price, gallery, description } =
-    camper;
+  const {
+    name,
+    rating,
+    reviews,
+    location,
+    price,
+    gallery,
+    description,
+    transmission,
+    AC,
+    engine,
+    kitchen,
+    radio,
+    form,
+    length,
+    width,
+    height,
+    tank,
+    consumption,
+  } = camper;
+
+  const details = {
+    transmission,
+    airConditioner: AC,
+    engine,
+    kitchen,
+    radio,
+  };
+
+  const vehicleDetails = {
+    form,
+    length,
+    width,
+    height,
+    tank,
+    consumption,
+  };
 
   return (
     <div>
@@ -19,7 +55,7 @@ const CamperDetails = ({ camper }) => {
               <use href="/sprite.svg#icon-filled-star" />
             </svg>
             <p>
-              {raiting} ({reviews.length} Reviews
+              {rating} ({reviews.length} Reviews)
             </p>
           </div>
           <div className="flex gap-1 items-center">
@@ -52,7 +88,7 @@ const CamperDetails = ({ camper }) => {
           } pb-4`}
           onClick={() => setActiveTab("features")}
         >
-          Feature
+          Features
         </button>
         <button
           className={`pb-1 border-b-[5px] ${
@@ -64,9 +100,17 @@ const CamperDetails = ({ camper }) => {
         </button>
       </div>
 
-      <div>
-        {activeTab === "features" && <Features camper={camper} />}
-        {activeTab === "reviews" && <Reviews camper={camper} />}
+      <div className="mt-11 flex gap-10">
+        <div>
+          {activeTab === "features" && (
+            <Features details={details} vehicleDetails={vehicleDetails} />
+          )}
+          {activeTab === "reviews" && <Reviews reviews={reviews} />}
+        </div>
+
+        <div>
+          <CamperContactForm />
+        </div>
       </div>
     </div>
   );
