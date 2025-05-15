@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const CatalogTruckCard = ({ items = [] }) => {
+  const navigate = useNavigate();
+
   return (
     <ul className="mt-12">
       {items.map((item) => (
@@ -9,11 +13,11 @@ const CatalogTruckCard = ({ items = [] }) => {
               src={item.gallery[0]?.thumb}
               alt={item.name}
             />
-            <div>
+            <div className="w-[524px]">
               <div className="flex gap-60 justify-between">
                 <h2>{item.name}</h2>
                 <div className="flex gap-4">
-                  <p>{item.price}</p>
+                  <p>€ {item.price}</p>
                   <svg className="text-[#101828]" width="24px" height="21px">
                     <use href="/sprite.svg#icon-empty-hearth" />
                   </svg>
@@ -95,7 +99,10 @@ const CatalogTruckCard = ({ items = [] }) => {
                   )}
                 </ul>
 
-                <button className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10">
+                <button
+                  onClick={() => navigate(`/catalog/${item.id}`)}
+                  className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10"
+                >
                   Show More
                 </button>
               </div>

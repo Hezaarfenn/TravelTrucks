@@ -29,7 +29,6 @@ const CatalogPage = () => {
       selectedEquipments,
     });
 
-    console.log("FILTERED RESULT:", result);
     setFilteredItems(result);
   };
 

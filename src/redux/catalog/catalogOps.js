@@ -15,3 +15,15 @@ export const fetchCatalog = createAsyncThunk(
     }
   },
 );
+
+export const fetchTruckById = createAsyncThunk(
+  "catalog/fetchById",
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
