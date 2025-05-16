@@ -6,7 +6,7 @@ const CamperContactForm = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <div className="w-[641px] h-[588px] mt-11">
+    <div className="mb-20 border border-[#DADDE1] rounded-[10px] p-11 flex flex-col gap-6 min-h-[600px]">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl font-semibold">Book your campervan now</h2>
         <p className="text-gray-600">
@@ -14,7 +14,7 @@ const CamperContactForm = () => {
         </p>
       </div>
 
-      <form action="" className="flex flex-col gap-4 mt-6">
+      <form action="" className="flex flex-col gap-4">
         <input
           type="text"
           placeholder="Name*"
@@ -34,9 +34,9 @@ const CamperContactForm = () => {
           className="p-4.5"
         />
 
-        <input type="text" placeholder="Comment*" className="p-4.5" />
-        <div className="flex justify-center mt-6">
-          <button className="bg-[#E44848] cursor-pointer rounded-[40px] text-white py-4 px-[60px]">
+        <textarea type="text" placeholder="Comment*" className="p-4.5" />
+        <div className="flex justify-center gap-2.5">
+          <button className="bg-[#E44848] cursor-pointer rounded-full text-white py-4 px-[60px]">
             Send
           </button>
         </div>

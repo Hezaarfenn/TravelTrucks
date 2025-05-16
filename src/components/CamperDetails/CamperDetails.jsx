@@ -79,7 +79,7 @@ const CamperDetails = ({ camper }) => {
         ))}
       </div>
 
-      <p className="mt-7 ml-16">{description}</p>
+      <p className="mt-7 ml-16 text-[#475467]">{description}</p>
 
       <div className="flex mt-15 ml-16 gap-10 font-bold text-xl">
         <button

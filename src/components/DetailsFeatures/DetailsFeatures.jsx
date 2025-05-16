@@ -15,8 +15,8 @@ const DetailsFeatures = ({ details = {}, vehicleDetails = {} }) => {
   ];
 
   return (
-    <div className="w-[631px] h-[588px]">
-      <ul className="flex flex-wrap gap-2 py-11 px-20">
+    <div className="ml-16 mb-20 border border-[#DADDE1] rounded-[10px] p-11 flex flex-col gap-[100px] min-h-[600px] w-[631px]">
+      <ul className="flex flex-wrap gap-2">
         {featuresMap.map(({ key, label, icon, isBoolean }) => {
           const value = details[key];
 
@@ -44,11 +44,11 @@ const DetailsFeatures = ({ details = {}, vehicleDetails = {} }) => {
         })}
       </ul>
 
-      <div className="py-11 px-20 ">
-        <h2 className="font-bold text-xl mb-6">Vehicle details</h2>
+      <div className="flex flex-col gap-6">
+        <h2 className="font-bold text-xl">Vehicle details</h2>
         <hr className="border-solid border-[#DADDE1]" />
 
-        <div className="flex mt-6 justify-between">
+        <div className="flex justify-between">
           <div className="flex flex-col gap-4">
             <p>Form</p>
             <p>Length</p>

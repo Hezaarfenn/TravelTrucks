@@ -4,16 +4,19 @@ const CatalogTruckCard = ({ items = [] }) => {
   const navigate = useNavigate();
 
   return (
-    <ul className="mt-12">
+    <ul className="mt-12 flex flex-col gap-8 ">
       {items.map((item) => (
-        <li key={item.id} className="p-6">
+        <li
+          key={item.id}
+          className="p-6 border border-[#DADDE1] rounded-[20px] "
+        >
           <div className="flex gap-6">
             <img
               className="w-[292px] h-[320px] object-cover"
               src={item.gallery[0]?.thumb}
               alt={item.name}
             />
-            <div className="w-[524px]">
+            <div className="w-[888px]">
               <div className="flex gap-60 justify-between">
                 <h2>{item.name}</h2>
                 <div className="flex gap-4">
