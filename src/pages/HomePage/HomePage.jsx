@@ -1,4 +1,3 @@
-import Header from "../../components/Header/Header";
 import HeaderInfo from "../../components/HeaderInfo/HeaderInfo";
 import HomePicture from "/img/HomePicture.png";
 

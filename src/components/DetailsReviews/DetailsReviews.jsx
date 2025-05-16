@@ -6,7 +6,7 @@ const DetailsReviews = ({ reviews = [] }) => {
   }
 
   return (
-    <div className="ml-16 mb-20 rounded-[10px] w-[631px]">
+    <div className="ml-16 mb-20 pt-4 rounded-[10px] w-[631px]">
       <div className="flex flex-col gap-11">
         {reviews.map((review, index) => {
           const initial = review.reviewer_name?.[0]?.toUpperCase() || "?";

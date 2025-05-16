@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { fetchCatalog } from "../../redux/catalog/catalogOps";
 import { filterTrucks } from "../../utils/filterTrucks";
 import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar";
@@ -21,6 +22,12 @@ const CatalogPage = () => {
   useEffect(() => {
     dispatch(fetchCatalog());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(`Error occurred when receiving data: ${error}`);
+    }
+  });
 
   const handleSearch = () => {
     const result = filterTrucks({

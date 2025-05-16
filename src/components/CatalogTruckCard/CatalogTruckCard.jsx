@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { fetchCatalog } from "../../redux/catalog/catalogOps";
 import { useNavigate } from "react-router-dom";
 import {
@@ -55,8 +56,21 @@ const CatalogTruckCard = ({ items = [] }) => {
                       <p>€ {item.price.toFixed(2)}</p>
                       <button
                         onClick={() => {
-                          console.log("Favori butonuna tıklandı:", item.id);
                           dispatch(toggleFavorite(item));
+
+                          const isAlreadyFavorite = favorites.some(
+                            (favorite) => favorite.id === item.id,
+                          );
+
+                          if (isAlreadyFavorite) {
+                            toast.info(`${item.name} removed from favorites!`);
+                          } else {
+                            toast.success(`${item.name} added to favorites!`);
+                          }
+                          localStorage.setItem(
+                            "favorites",
+                            JSON.stringify(favorites),
+                          );
                         }}
                         className="focus:outline-none"
                         aria-label="Toggle Favorite"
