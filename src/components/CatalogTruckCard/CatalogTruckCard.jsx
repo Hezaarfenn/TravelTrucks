@@ -62,7 +62,7 @@ const CatalogTruckCard = ({ items = [] }) => {
                         aria-label="Toggle Favorite"
                       >
                         <svg
-                          className="text-[#101828]"
+                          className="text-[#101828] cursor-pointer"
                           width="24px"
                           height="21px"
                         >
@@ -155,7 +155,7 @@ const CatalogTruckCard = ({ items = [] }) => {
 
                     <button
                       onClick={() => navigate(`/catalog/${item.id}`)}
-                      className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10"
+                      className="bg-[#E44848] hover:border-[#D84343] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10"
                     >
                       Show More
                     </button>
@@ -171,7 +171,7 @@ const CatalogTruckCard = ({ items = [] }) => {
         <div className="flex justify-center m-10">
           <button
             onClick={handleLoadMore}
-            className="bg-[#DADDE1] cursor-pointer rounded-full text-[#101828] py-4 px-8"
+            className="bg-[#DADDE1] cursor-pointer hover:border hover:border-[#D84343] border border-transparent rounded-full text-[#101828] py-4 px-8"
           >
             Load More
           </button>

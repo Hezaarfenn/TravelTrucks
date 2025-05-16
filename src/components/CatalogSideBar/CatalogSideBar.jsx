@@ -66,7 +66,7 @@ const CatalogSideBar = ({
             <use href="/sprite.svg#icon-map" />
           </svg>
           <input
-            className="pl-11 placeholder-gray-700 focus:outline-none focus:border-white border border-[#6C717B] rounded-full py-2 w-full"
+            className="pl-11 text-gray-700 focus:outline-none focus:border-white border border-[#F7F7F7] rounded-full py-2 w-full"
             type="text"
             placeholder="Please enter the location."
             name="location"

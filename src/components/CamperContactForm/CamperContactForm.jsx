@@ -18,9 +18,13 @@ const CamperContactForm = () => {
         <input
           type="text"
           placeholder="Name*"
-          className="w-[527px] p-4.5 border border-[#F7F7F7] rounded-xl placeholder:text-[#6C717B]"
+          className="w-[527px] p-4.5 border border-[#F7F7F7] rounded-xl focus:outline-none text-[#101828] focus:text-[#6C717B]"
         />
-        <input type="email" placeholder="Email*" className="p-4.5" />
+        <input
+          type="email"
+          placeholder="Email*"
+          className="w-[527px] p-4.5 border border-[#F7F7F7] rounded-xl focus:outline-none text-[#101828] focus:text-[#6C717B]"
+        />
 
         {/* React Datepicker */}
         <DatePicker
@@ -31,12 +35,16 @@ const CamperContactForm = () => {
           popperPlacement="bottom-start"
           showPopperArrow={false}
           calendarClassName="shadow-md border rounded-xl"
-          className="p-4.5"
+          className="w-[527px] p-4.5 border border-[#F7F7F7] rounded-xl focus:outline-none text-[#101828] focus:text-[#6C717B]"
         />
 
-        <textarea type="text" placeholder="Comment*" className="p-4.5" />
+        <textarea
+          type="text"
+          placeholder="Comment*"
+          className="w-[527px] p-4.5 border border-[#F7F7F7] rounded-xl focus:outline-none text-[#101828] focus:text-[#6C717B]"
+        />
         <div className="flex justify-center gap-2.5">
-          <button className="bg-[#E44848] cursor-pointer rounded-full text-white py-4 px-[60px]">
+          <button className="bg-[#E44848] hover:border-[#D84343] cursor-pointer rounded-full text-white py-4 px-[60px]">
             Send
           </button>
         </div>

@@ -10,7 +10,7 @@ const HeaderInfo = () => {
         </p>
       </div>
       <Link to="/catalog">
-        <button className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14">
+        <button className="bg-[#E44848] hover:border-[#D84343] cursor-pointer rounded-4xl text-white py-4 px-14">
           View Now
         </button>
       </Link>

@@ -46,7 +46,7 @@ const CatalogPage = () => {
         />
         <button
           onClick={handleSearch}
-          className="bg-[#E44848] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10 ml-12"
+          className="bg-[#E44848] hover:border-[#D84343] cursor-pointer rounded-4xl text-white py-4 px-14 mt-10 ml-12"
         >
           Search
         </button>
