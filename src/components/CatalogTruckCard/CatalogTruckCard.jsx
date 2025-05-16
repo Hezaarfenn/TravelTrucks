@@ -50,7 +50,7 @@ const CatalogTruckCard = ({ items = [] }) => {
                 {/* Özellikler */}
                 <ul className="flex flex-wrap gap-2 mt-6">
                   {item.transmission && (
-                    <li className="flex gap-2">
+                    <li className="flex gap-2 border border-[#F2F4F7] rounded-full py-3 px-4.5">
                       <svg
                         className="text-[#101828]"
                         width="20px"
@@ -62,7 +62,7 @@ const CatalogTruckCard = ({ items = [] }) => {
                     </li>
                   )}
                   {item.engine && (
-                    <li className="flex gap-2">
+                    <li className="flex gap-2 border border-[#F2F4F7] rounded-full py-3 px-4.5">
                       <svg
                         className="text-[#101828]"
                         width="20px"
@@ -74,7 +74,7 @@ const CatalogTruckCard = ({ items = [] }) => {
                     </li>
                   )}
                   {item.kitchen && (
-                    <li className="flex gap-2">
+                    <li className="flex gap-2 border border-[#F2F4F7] rounded-full py-3 px-4.5">
                       <svg
                         className="text-[#101828]"
                         width="20px"
@@ -89,7 +89,7 @@ const CatalogTruckCard = ({ items = [] }) => {
 
                 <ul className="flex flex-wrap gap-2 mt-2">
                   {item.ac && (
-                    <li className="flex gap-2">
+                    <li className="flex gap-2 border border-[#F2F4F7] rounded-full py-3 px-4.5">
                       <svg
                         className="text-[#101828]"
                         width="20px"
