@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTruckById } from "../../redux/catalog/catalogOps";
 import CamperDetails from "../../components/CamperDetails/CamperDetails";
-import { Loader } from "../../components/Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const CampersDetailsPage = () => {
   const { id } = useParams();

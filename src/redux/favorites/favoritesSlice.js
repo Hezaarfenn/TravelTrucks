@@ -9,13 +9,13 @@ const favoritesSlice = createSlice({
   },
   reducers: {
     toggleFavorite: (state, action) => {
-      const catalog = action.payload;
-      const exists = state.items.find((item) => item.id === catalog.id);
+      const camper = action.payload;
+      const exists = state.items.find((item) => item.id === camper.id);
 
       if (exists) {
-        state.items = state.items.filter((item) => item.id !== catalog.id);
+        state.items = state.items.filter((item) => item.id !== camper.id);
       } else {
-        state.items.push(catalog);
+        state.items.push(camper);
       }
 
       localStorage.setItem("favorites", JSON.stringify(state.items));
@@ -29,3 +29,5 @@ const favoritesSlice = createSlice({
 
 export const { toggleFavorite, clearFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
+
+export const selectFavorites = (state) => state.favorites.items;

@@ -4,7 +4,7 @@ import { fetchCatalog } from "../../redux/catalog/catalogOps";
 import { filterTrucks } from "../../utils/filterTrucks";
 import CatalogSideBar from "../../components/CatalogSideBar/CatalogSideBar";
 import CatalogTruckCard from "../../components/CatalogTruckCard/CatalogTruckCard";
-import { Loader } from "../../components/Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();

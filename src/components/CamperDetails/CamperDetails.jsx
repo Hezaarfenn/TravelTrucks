@@ -65,7 +65,7 @@ const CamperDetails = ({ camper }) => {
             <p>{location}</p>
           </div>
         </div>
-        <p className="mt-4 text-xl font-semibold">€ {price}</p>
+        <p className="mt-4 text-xl font-semibold">€ {price.toFixed(2)}</p>
       </div>
 
       <div className="flex flex-wrap gap-12 mt-7 ml-16">
