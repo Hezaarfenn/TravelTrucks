@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { fetchCatalog } from "../../redux/catalog/catalogOps";
@@ -17,12 +17,34 @@ const CatalogTruckCard = ({ items = [] }) => {
   const error = useSelector((state) => state.catalog.error);
 
   const favorites = useSelector(selectFavorites);
+  const prevFavoritesRef = useRef(favorites);
 
   const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     dispatch(fetchCatalog());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (prevFavoritesRef.current !== favorites) {
+      const prevIds = prevFavoritesRef.current.map((item) => item.id);
+      const currentIds = favorites.map((item) => item.id);
+
+      const added = favorites.find((item) => !prevIds.includes(item.id));
+      const removed = prevFavoritesRef.current.find(
+        (item) => !currentIds.includes(item.id),
+      );
+
+      if (added) {
+        toast.success(`${added.name} added to favorites!`);
+      }
+      if (removed) {
+        toast.info(`${removed.name} removed from favorites!`);
+      }
+
+      prevFavoritesRef.current = favorites;
+    }
+  }, [favorites]);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 4);
@@ -57,20 +79,6 @@ const CatalogTruckCard = ({ items = [] }) => {
                       <button
                         onClick={() => {
                           dispatch(toggleFavorite(item));
-
-                          const isAlreadyFavorite = favorites.some(
-                            (favorite) => favorite.id === item.id,
-                          );
-
-                          if (isAlreadyFavorite) {
-                            toast.info(`${item.name} removed from favorites!`);
-                          } else {
-                            toast.success(`${item.name} added to favorites!`);
-                          }
-                          localStorage.setItem(
-                            "favorites",
-                            JSON.stringify(favorites),
-                          );
                         }}
                         className="focus:outline-none"
                         aria-label="Toggle Favorite"

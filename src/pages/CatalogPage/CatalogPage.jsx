@@ -14,10 +14,10 @@ const CatalogPage = () => {
   const allTrucks = items?.items || [];
 
   const [filteredItems, setFilteredItems] = useState([]);
-
   const [location, setLocation] = useState("");
   const [selectedEquipments, setSelectedEquipments] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCatalog());
@@ -27,7 +27,7 @@ const CatalogPage = () => {
     if (error) {
       toast.error(`Error occurred when receiving data: ${error}`);
     }
-  });
+  }, [error]);
 
   const handleSearch = () => {
     const result = filterTrucks({
@@ -38,6 +38,7 @@ const CatalogPage = () => {
     });
 
     setFilteredItems(result);
+    setHasSearched(true);
   };
 
   return (
@@ -62,8 +63,15 @@ const CatalogPage = () => {
       <div>
         {isLoading && <Loader />}
         {error && <p>Error: {error}</p>}
-        {filteredItems.length > 0 ? (
-          <CatalogTruckCard items={filteredItems} />
+
+        {hasSearched ? (
+          filteredItems.length > 0 ? (
+            <CatalogTruckCard items={filteredItems} />
+          ) : (
+            <p className="text-center mt-20 text-gray-500 text-xl">
+              No results found for your filters.
+            </p>
+          )
         ) : (
           allTrucks.length > 0 && <CatalogTruckCard items={allTrucks} />
         )}
